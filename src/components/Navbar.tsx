@@ -7,7 +7,9 @@ export default function Navbar() {
     <div className="w-full">
       <div className="flex flex-row justify-between m-4">
         <div className="flex justify-end">
-          <span>Reflow</span>
+          <span>
+            <h1 className="font-bold text-2xl">Reflow</h1>
+          </span>
         </div>
         <div className="flex justify-start">
           <Button onClick={fcl.authenticate}>Connect</Button>
