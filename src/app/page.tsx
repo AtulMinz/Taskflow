@@ -13,7 +13,7 @@ export default function Home() {
         <div className="flex items-center flex-col">
           <h1 className="font-extrabold text-6xl">Welcome to Taskflow</h1>
           <p className="font-serif text-3xl mt-2">
-            We provide services in your fingertips.
+            We provide services at your fingertips.
           </p>
         </div>
         <div className="mt-7 space-x-3">
