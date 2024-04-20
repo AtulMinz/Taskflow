@@ -73,7 +73,7 @@ export default function Services() {
                   className="w-[70%] h-[50vh] border"
                 />
               </div>
-              <div className="">
+              <div>
                 <CardDescription className="font-semibold">
                   {service.description}
                 </CardDescription>
@@ -84,8 +84,8 @@ export default function Services() {
                   {service.workerName}
                 </CardDescription>
                 <CardDescription>
-                  <span className="font-semibold">Hours: </span>
-                  {service.hours}
+                  <span className="font-semibold">Time: </span>
+                  {service.time}
                 </CardDescription>
                 <CardDescription>
                   <span className="font-semibold">Price in flow token: </span>
