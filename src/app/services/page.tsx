@@ -24,7 +24,7 @@ export default function Services() {
       </div>
       <div className="grid lg:grid-cols-2 sm:grid-cols-1">
         {services.map((service) => (
-          <Card className="flex-grow m-10">
+          <Card className="flex-grow m-10" key={service.name}>
             <CardHeader>
               <CardTitle className="font-black">{service.name}</CardTitle>
             </CardHeader>
