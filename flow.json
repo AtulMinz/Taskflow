@@ -12,6 +12,13 @@
 				"type": "file",
 				"location": "emulator-account.pkey"
 			}
+		},
+		"taskflow": {
+			"address": "2e25912fb78c0f35",
+			"key": {
+				"type": "file",
+				"location": "taskflow.pkey"
+			}
 		}
 	}
 }
