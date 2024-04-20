@@ -12,9 +12,7 @@ export default function Home() {
         <Image src="work.svg" alt="main" width={400} height={400} />
         <div className="flex items-center flex-col">
           <h1 className="font-extrabold text-6xl">Welcome to Taskflow</h1>
-          <p className="font-serif text-3xl mt-2">
-            We provide services at your fingertips.
-          </p>
+          <p className="font-serif text-3xl mt-2">Flow for Daily Life.</p>
         </div>
         <div className="mt-7 space-x-3">
           <Button variant="secondary" onClick={() => router.push("/about")}>
