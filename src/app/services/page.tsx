@@ -13,7 +13,8 @@ import {
 import Image from "next/image";
 import { services } from "@/lib/data";
 import * as fcl from "@onflow/fcl";
-import { Toaster, toast } from "sonner";
+import { toast } from "sonner";
+import Dialogbox from "@/components/Dialogbox";
 
 export default function Services() {
   const transferToken = async (amount) => {
@@ -56,31 +57,43 @@ export default function Services() {
       </div>
       <div className="grid lg:grid-cols-2 sm:grid-cols-1">
         {services.map((service) => (
-          <Card className="flex-grow-0 m-10 bg-orange-400" key={service.name}>
+          <Card className="flex-grow m-10" key={service.name}>
             <CardHeader>
               <CardTitle className="font-black">{service.name}</CardTitle>
             </CardHeader>
             <CardContent className="space-y-2">
               <div className="flex justify-center">
-                <img src={service.image} alt="service" className="w-4/5" />
+                <img
+                  src={service.image}
+                  alt="service"
+                  className="w-[70%] h-[50vh] border"
+                />
               </div>
-              <CardDescription className="font-semibold">
-                {service.description}
-              </CardDescription>
-              <CardDescription>
-                <span className="font-semibold">Name of the provider: </span>
-                {service.workerName}
-              </CardDescription>
-              <CardDescription>
-                <span className="font-semibold">Hours: </span>
-                {service.hours}
-              </CardDescription>
-              <CardDescription>
-                <span className="font-semibold">Price in flow token: </span>
-                {service.price}
-              </CardDescription>
+              <div className="">
+                <CardDescription className="font-semibold">
+                  {service.description}
+                </CardDescription>
+              </div>
+              <div className="flex space-x-6">
+                <CardDescription>
+                  <span className="font-semibold">Name of the provider: </span>
+                  {service.workerName}
+                </CardDescription>
+                <CardDescription>
+                  <span className="font-semibold">Hours: </span>
+                  {service.hours}
+                </CardDescription>
+                <CardDescription>
+                  <span className="font-semibold">Price in flow token: </span>
+                  {service.price}
+                </CardDescription>
+              </div>
               <div className="flex justify-end">
-                <Button onClick={() => transferToken(10.1)}>Book</Button>
+                <Dialogbox>
+                  <Button onClick={() => transferToken(service.price)}>
+                    Place Order
+                  </Button>
+                </Dialogbox>
               </div>
             </CardContent>
           </Card>
