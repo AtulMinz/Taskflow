@@ -49,7 +49,7 @@ export default function Navbar() {
   };
 
   return (
-    <div className="w-full">
+    <div className="w-full border-b border-black">
       <div className="flex flex-row justify-between m-4">
         <div className="flex justify-end">
           <span>
