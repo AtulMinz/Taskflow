@@ -54,7 +54,9 @@ export default function Services() {
           height={300}
           className="mix-blend-darken"
         />
-        <h1 className="font-semibold text-2xl">Select what suits you</h1>
+        <h1 className="font-semibold text-2xl ml-8">
+          Solutions at Your Fingertips
+        </h1>
       </div>
       <div className="grid lg:grid-cols-2 sm:grid-cols-1">
         {services.map((service) => (
