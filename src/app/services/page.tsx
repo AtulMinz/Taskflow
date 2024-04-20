@@ -24,17 +24,14 @@ export default function Services() {
       </div>
       <div className="grid lg:grid-cols-2 sm:grid-cols-1">
         {services.map((service) => (
-          <Card className="flex-grow m-10" key={service.name}>
+          <Card className="flex-grow-0 m-10 bg-orange-400" key={service.name}>
             <CardHeader>
               <CardTitle className="font-black">{service.name}</CardTitle>
             </CardHeader>
             <CardContent className="space-y-2">
-              <Image
-                src={service.image}
-                alt="service"
-                width={300}
-                height={200}
-              />
+              <div className="flex justify-center">
+                <img src={service.image} alt="service" className="w-4/5" />
+              </div>
               <CardDescription className="font-semibold">
                 {service.description}
               </CardDescription>
