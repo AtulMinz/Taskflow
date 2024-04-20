@@ -8,7 +8,7 @@ export const services = [
     hours: "3",
   },
   {
-    name: "Cleaning",
+    name: "Making an Advertisment",
     description: "Clean the whole house",
     image: "",
     price: "10",
