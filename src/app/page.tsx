@@ -3,7 +3,6 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { workerData } from "worker_threads";
 
 export default function Home() {
   const router = useRouter();
@@ -12,12 +11,15 @@ export default function Home() {
       <div className="flex justify-center items-center h-full flex-col">
         <Image src="work.svg" alt="main" width={400} height={400} />
         <div className="flex items-center flex-col">
-          <h1 className="font-extrabold text-6xl">Welcome to the flow</h1>
+          <h1 className="font-extrabold text-6xl">Welcome to Taskflow</h1>
           <p className="font-serif text-3xl mt-2">
-            We provide housing services.
+            We provide services in your fingertips.
           </p>
         </div>
-        <div className="mt-7">
+        <div className="mt-7 space-x-3">
+          <Button variant="secondary" onClick={() => router.push("/about")}>
+            About Us
+          </Button>
           <Button onClick={() => router.push("/services")}>
             Book yourself a service &rarr;
           </Button>
