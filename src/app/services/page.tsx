@@ -1,3 +1,6 @@
+//@ts-nocheck
+"use client";
+
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -8,8 +11,35 @@ import {
 } from "@/components/ui/card";
 import Image from "next/image";
 import { services } from "@/lib/data";
+import * as fcl from "@onflow/fcl";
 
 export default function Services() {
+  const transferToken = async (amount) => {
+    const trasnsactionId = await fcl.mutate({
+      cadence: `
+      import Taskflow from 0x2e25912fb78c0f35
+
+        transaction(amount: UFix64) {
+          prepare(signer: AuthAccount) {
+          log("Getting things ")
+        }
+        execute {
+          Taskflow.transfer(amount: 11.9)
+          log("Done")
+        }
+      }
+      `,
+      args: (arg, t) => [arg(amount, t.UFix64)],
+      payer: fcl.authz,
+      proposer: fcl.authz,
+      authorizations: [fcl.authz],
+    });
+    const transaction = await fcl.tx(trasnsactionId).onceSealed();
+    if (transaction) {
+      alert("Successful");
+    }
+  };
+
   return (
     <main>
       <div className="flex h-[100px] justify-center items-center mt-10">
@@ -48,7 +78,7 @@ export default function Services() {
                 {service.price}
               </CardDescription>
               <div className="flex justify-end">
-                <Button>Book</Button>
+                <Button onClick={() => transferToken(10.1)}>Book</Button>
               </div>
             </CardContent>
           </Card>
