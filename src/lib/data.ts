@@ -13,7 +13,7 @@ export const services = [
     description: "Clean the whole house",
     image:
       "https://img.freepik.com/free-vector/home-gardening-logo_17005-1524.jpg",
-    price: 100.0,
+    price: 99.9,
     workerName: "Alex & John",
     hours: "3",
   },
@@ -22,7 +22,7 @@ export const services = [
     description: "Clean the whole house",
     image:
       "https://i.pinimg.com/originals/46/79/8c/46798c3b6cc788748a78d5660b619ada.jpg",
-    price: 150.0,
+    price: 149.9,
     workerName: "Maria",
     hours: "3",
   },
