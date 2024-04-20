@@ -54,7 +54,7 @@ export default function Navbar() {
         <div className="flex justify-end">
           <span>
             <Button variant="ghost" onClick={() => router.push("/")}>
-              <h1 className="font-bold text-2xl cursor-pointer">Reflow</h1>
+              <h1 className="font-bold text-2xl cursor-pointer">Taskflow</h1>
             </Button>
           </span>
         </div>
