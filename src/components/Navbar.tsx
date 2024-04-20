@@ -6,9 +6,11 @@ import { Button } from "@/components/ui/button";
 import * as fcl from "@onflow/fcl";
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import { useRouter } from "next/navigation";
 
 export default function Navbar() {
   const [user, setUser] = React.useState({ addr: "", loggedIn: null });
+  const router = useRouter();
 
   React.useEffect(() => {
     fcl.currentUser.subscribe(setUser);
@@ -51,7 +53,9 @@ export default function Navbar() {
       <div className="flex flex-row justify-between m-4">
         <div className="flex justify-end">
           <span>
-            <h1 className="font-bold text-2xl">Reflow</h1>
+            <Button variant="ghost" onClick={() => router.push("/")}>
+              <h1 className="font-bold text-2xl cursor-pointer">Reflow</h1>
+            </Button>
           </span>
         </div>
         <div className="flex justify-start">
