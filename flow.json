@@ -1,4 +1,7 @@
 {
+	"contracts": {
+		"Taskflow": "./cadence/contracts/Taskflow.cdc"
+	},
 	"networks": {
 		"emulator": "127.0.0.1:3569",
 		"mainnet": "access.mainnet.nodes.onflow.org:9000",
@@ -13,12 +16,19 @@
 				"location": "emulator-account.pkey"
 			}
 		},
-		"taskflow": {
+		"my-testnet": {
 			"address": "2e25912fb78c0f35",
 			"key": {
 				"type": "file",
 				"location": "taskflow.pkey"
 			}
+		}
+	},
+	"deployments": {
+		"testnet": {
+			"my-testnet": [
+				"Taskflow"
+			]
 		}
 	}
 }
