@@ -82,15 +82,15 @@ export default function Services() {
               </div>
               <div className="flex space-x-6">
                 <CardDescription>
-                  <span className="font-semibold">Name of the provider: </span>
+                  <span className="font-bold">Name of the provider: </span>
                   {service.workerName}
                 </CardDescription>
                 <CardDescription>
-                  <span className="font-semibold">Time: </span>
+                  <span className="font-bold">Time: </span>
                   {service.time}
                 </CardDescription>
                 <CardDescription>
-                  <span className="font-semibold">Price in flow token: </span>
+                  <span className="font-bold">Price in flow token: </span>
                   {service.price}
                 </CardDescription>
               </div>
