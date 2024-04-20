@@ -2,6 +2,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { RocketIcon } from "@radix-ui/react-icons";
 import {
   Card,
   CardContent,
@@ -12,6 +13,7 @@ import {
 import Image from "next/image";
 import { services } from "@/lib/data";
 import * as fcl from "@onflow/fcl";
+import { Toaster, toast } from "sonner";
 
 export default function Services() {
   const transferToken = async (amount) => {
@@ -35,9 +37,9 @@ export default function Services() {
       authorizations: [fcl.authz],
     });
     const transaction = await fcl.tx(trasnsactionId).onceSealed();
-    if (transaction) {
-      alert("Successful");
-    }
+    transaction
+      ? toast.success("Transaction was successful!")
+      : toast.error("Transaction failed!");
   };
 
   return (
@@ -50,7 +52,7 @@ export default function Services() {
           height={300}
           className="mix-blend-darken"
         />
-        <h1 className="font-semibold text-2xl">Select what suites you</h1>
+        <h1 className="font-semibold text-2xl">Select what suits you</h1>
       </div>
       <div className="grid lg:grid-cols-2 sm:grid-cols-1">
         {services.map((service) => (
