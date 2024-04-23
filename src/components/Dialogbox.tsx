@@ -82,6 +82,7 @@ export default function Dialogbox({
               <Popover>
                 <PopoverTrigger asChild>
                   <Button
+                    type="submit"
                     variant={"outline"}
                     className={cn(
                       "w-[240px] justify-start text-left font-normal",
@@ -98,6 +99,7 @@ export default function Dialogbox({
                     selected={date}
                     onSelect={setDate}
                     initialFocus
+                    required
                   />
                 </PopoverContent>
               </Popover>

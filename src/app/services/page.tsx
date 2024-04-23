@@ -2,7 +2,6 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { RocketIcon } from "@radix-ui/react-icons";
 import {
   Card,
   CardContent,
@@ -17,23 +16,33 @@ import { toast } from "sonner";
 import Dialogbox from "@/components/Dialogbox";
 
 export default function Services() {
-  const transferToken = async (amount) => {
-    const trasnsactionId = await fcl.mutate({
-      cadence: `
-      import Taskflow from 0x2e25912fb78c0f35
+  const transferToken = async (toAddress: string, amount: string) => {
+    const cadence = `
+    import FungibleToken from 0x9a0766d93b6608b7
+    import FlowToken from 0x7e60df042a9c0868
+      transaction(recipient: Address, amount: UFix64) {
+        prepare(signer: AuthAccount) {
+          let sender = signer.borrow<&FlowToken.Vault>(from: /storage/flowTokenVault)
+          ?? panic("Could not borrow Provider reference to the Vault")
 
-        transaction(amount: UFix64) {
-          prepare(signer: AuthAccount) {
-          log("Getting things ")
-        }
-        execute {
-          let amount: UFix64 = 0.0
-          Taskflow.transfer(amount: amount)
-          log("Done")
+          let receiverAccount = getAccount(recipient)
+
+          let receiver = receiverAccount.getCapability(/public/flowTokenReceiver)
+          .borrow<&FlowToken.Vault{FungibleToken.Receiver}>()
+          ??panic("Could not borrow Receiver reference to the Vault")
+
+          let tempVault <- sender.withdraw(amount: amount)
+          receiver.deposit(from: <- tempVault)
         }
       }
-      `,
-      args: (arg, t) => [arg(amount, t.UFix64)],
+    `;
+    const trasnsactionId = await fcl.mutate({
+      cadence,
+      limit: 1000,
+      args: (arg, t) => [
+        arg(toAddress, t.Address),
+        arg(Number.parseFloat(amount).toFixed(2), t.UFix64),
+      ],
       payer: fcl.authz,
       proposer: fcl.authz,
       authorizations: [fcl.authz],
@@ -96,7 +105,11 @@ export default function Services() {
               </div>
               <div className="flex justify-end">
                 <Dialogbox>
-                  <Button onClick={() => transferToken(service.price)}>
+                  <Button
+                    onClick={() =>
+                      transferToken("0x2d8295c356f1da52", service.price)
+                    }
+                  >
                     Place Order
                   </Button>
                 </Dialogbox>
